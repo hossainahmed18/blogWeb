@@ -35,11 +35,15 @@ const routes: Routes = [
     component: LoginComponent
   },
   {
-    path: 'posts/write-comment',
-    component: CommentFormComponent
+    path: 'user/login/:id',
+    component: LoginComponent
   },
   {
     path: 'posts/:id',
+    component: SinglePostComponent
+  },
+  {
+    path: 'posts/:id/:com',
     component: SinglePostComponent
   },
   {
