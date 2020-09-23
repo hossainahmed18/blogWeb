@@ -28,7 +28,10 @@ import { CreatePostComponent } from './create-post/create-post.component'
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule
+
   ],
   providers: [AuthService,
 
