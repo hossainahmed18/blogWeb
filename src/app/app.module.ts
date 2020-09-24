@@ -12,7 +12,10 @@ import { PostsComponent } from './posts/posts.component';
 import { CommentsComponent } from './comments/comments.component';
 import { CommentFormComponent } from './comment-form/comment-form.component';
 import { SinglePostComponent } from './single-post/single-post.component';
-import { CreatePostComponent } from './create-post/create-post.component'
+import { CreatePostComponent } from './create-post/create-post.component';
+
+import {MatIconModule} from '@angular/material/icon'; 
+
 
 
 
@@ -30,7 +33,8 @@ import { CreatePostComponent } from './create-post/create-post.component'
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    MatIconModule
 
   ],
   providers: [AuthService,
