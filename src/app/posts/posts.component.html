@@ -1,3 +1,30 @@
-<span class="material-icons">
-    clear
-    </span>
+<div class="row">
+    <button class="btn btn-success" (click)="formActive()">create post</button>
+    <div *ngFor="let post of posts" class="card column">
+        <div class="row justify-content-around">
+            <div class ="col-md-6">
+            <span class="material-icons">
+                clear
+            </span>
+            </div>
+            <div class ="col-md-6">
+            <span class="material-icons">
+                create
+            </span>
+            </div>
+        </div>
+
+
+        <p>{{post.author}}</p>
+        <div > <h3>{{post.title}}</h3> </div>
+        <div > <h3>{{post.body}}</h3> </div>
+    </div>
+
+   <div>
+
+<div *ngIf="overlay==true">
+   <app-login ></app-login>
+</div>
+
+
+</div> 
