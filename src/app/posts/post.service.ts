@@ -12,18 +12,18 @@ export class PostService {
       this.apiURL = baseUrl
      }
     getAllPost(role){
-       this.http.get(this.apiURL+`/posts/${role}`);
+      return this.http.get(this.apiURL+`/posts/${role}`);
     }
     getSinglePost(id){
-      this.http.get(this.apiURL+`/singlepost/${id}`);
+      return this.http.get(this.apiURL+`/singlepost/${id}`);
     }
     updatePost(id,body){
-      this.http.put(this.apiURL+`/singlepost/${id}`,body);
+      return this.http.put(this.apiURL+`/singlepost/${id}`,body);
     }
     createPost(body){
-      this.http.put(this.apiURL+`/posts`,body);
+      return this.http.put(this.apiURL+`/posts`,body);
     }
     deletePost(id){
-      this.http.delete(this.apiURL+`/singlepost/${id}`);
+      return this.http.delete(this.apiURL+`/singlepost/${id}`);
     }
 }

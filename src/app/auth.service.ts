@@ -53,7 +53,12 @@ export class AuthService {
 
   getUserData(token){
        //let token = localStorage.getItem('token')
-       return this.parseJwt(token)
+       if(token!=null){
+        return this.parseJwt(token)
+       }else{
+         return null;
+       }
+       
   }
 
   parseJwt(token) {

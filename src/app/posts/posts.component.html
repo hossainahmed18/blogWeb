@@ -4,50 +4,55 @@
 
 
 <div class="row">
-    
+
     <div *ngFor="let post of posts" class="card column">
-        <div >
-        <div class="row justify-content-around">
-            <div class ="col-md-4">
-            <span class="material-icons">
-                clear
-            </span>
+        <div>
+            <div class="row justify-content-around">
+                <div *ngIf="post.author==user.sub || user.role=='admin' " class="col-md-4">
+                    <span class="material-icons">
+                        clear
+                    </span>
 
-            
 
-            </div>
 
-            <div class ="col-md-4">
-                <button class="sm btn-danger">
-                    {{post.status}}
-                </button>
-            </div>
+                </div>
 
-            <div class ="col-md-4">
-            <span class="material-icons">
-                create
-            </span>
+                <div *ngIf="user.role=='admin'" class="col-md-4">
+                    <button class="sm btn-danger">
+                        {{post.status}}
+                    </button>
+                </div>
+
+                <div *ngIf="post.author==user.sub" class="col-md-4">
+                    <span class="material-icons">
+                        create
+                    </span>
+                </div>
             </div>
         </div>
 
 
         <p>{{post.author}}</p>
-        <a [routerLink]="['/posts', post.id]" > <h4>{{post.title}}</h4> </a>
-        <a [routerLink]="['/posts', post.id]" > <p>{{post.body}}</p> </a>
+        <a [routerLink]="['/posts', post.id]">
+            <h4>{{post.title}}</h4>
+        </a>
+        <a [routerLink]="['/posts', post.id]">
+            <p>{{post.body}}</p>
+        </a>
 
     </div>
-    </div>
-
-   <div>
-
-<div *ngIf="overlay==true" class="overlay">
-  
-    <span class="material-icons position-relative mt-5 ml-4" (click)="hideLofForm()">
-        clear
-    </span>
- 
-   <app-login ></app-login>
 </div>
 
+<div>
 
-</div> 
+    <div *ngIf="overlay==true" class="overlay">
+
+        <span class="material-icons position-relative mt-5 ml-4" (click)="hideLofForm()">
+            clear
+        </span>
+
+        <app-login></app-login>
+    </div>
+
+
+</div>

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { from } from 'rxjs';
 import {AuthService} from'../auth.service'
+import {PostService} from'./post.service'
+import {CommentService} from'./comment.service'
 
 
 @Component({
@@ -50,19 +52,38 @@ export class PostsComponent implements OnInit {
           title:'voluptate et itaque vero tempora molestiae',
           body : 'eveniet quo quis\nlaborum totam consequatur non dolor\nut et est repudiandae\nest voluptatem vel debitis et magnam',
           id: 6,
-          author: 'we',
+          author: 'abc',
           status: 'approved',
         }
    ]
    overlay=false;
-   user={}
+   user:any={
+      role:"",
+      sub: ""
 
-  constructor(private authService:AuthService) { 
+   }
+
+  constructor(private authService:AuthService,private postService:PostService,private commentService:CommentService) { 
 
   }
 
   ngOnInit() {
-      console.log(this.authService.getUserData('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhYmMiLCJ1c2VyTmFtZSI6ImFiYyIsInJvbGUiOiJ1c2VyIiwianRpIjoiOTJiZWRhNDItZGY3NS00ZGJkLTlhZWYtZTA5MmNmNDA1NDc2IiwiZXhwIjoxNjAxMDMxNDcxLCJpc3MiOiJodHRwczovL2xvY2FsaG9zdDo0NDMzNi8iLCJhdWQiOiJodHRwczovL2xvY2FsaG9zdDo0NDMzNi8ifQ._MgbX1L1FD_g_w7K3atqzSg3WN62-R1y-U6QPS7blK8'))
+      
+     // let retUser=this.authService.getUserData('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhYmMiLCJ1c2VyTmFtZSI6ImFiYyIsInJvbGUiOiJ1c2VyIiwianRpIjoiOTJiZWRhNDItZGY3NS00ZGJkLTlhZWYtZTA5MmNmNDA1NDc2IiwiZXhwIjoxNjAxMDMxNDcxLCJpc3MiOiJodHRwczovL2xvY2FsaG9zdDo0NDMzNi8iLCJhdWQiOiJodHRwczovL2xvY2FsaG9zdDo0NDMzNi8ifQ._MgbX1L1FD_g_w7K3atqzSg3WN62-R1y-U6QPS7blK8')
+      let retUser=this.authService.getUserData('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJqdW5heWVkIiwidXNlck5hbWUiOiJqdW5heWVkIiwicm9sZSI6ImFkbWluIiwianRpIjoiZTgyYTc0YzYtZTE2MS00NTEwLWJjZGItNTZjMGVmNWU5YjJiIiwiZXhwIjoxNjAxMDQyMjcwLCJpc3MiOiJodHRwczovL2xvY2FsaG9zdDo0NDMzNi8iLCJhdWQiOiJodHRwczovL2xvY2FsaG9zdDo0NDMzNi8ifQ.hnQCtWGuqQ3jDg2rBkNLU8cLH5uNi7ohao6P1szYrRY')
+      console.log(retUser)
+      if(retUser!=null){
+          this.user=retUser;
+      }
+     // this.loadPosts()
+
+      
+  }
+
+  loadPosts(){
+    this.postService.getAllPost(this.user.role).subscribe((data:any)=>{
+      this.posts=data
+    })
   }
 
   formActive(){
