@@ -1,5 +1,5 @@
 <div class="row justify-content-end">
-    <button class="btn btn-success " (click)="formActive()">create post</button>
+    <button class="btn btn-success " (click)="checkValidity()">create post</button>
 </div>
 
 
@@ -24,9 +24,9 @@
                 </div>
 
                 <div *ngIf="post.author==user.sub" class="col-md-4">
-                    <span class="material-icons">
+                    <a class="material-icons" [routerLink]="['/post/create-post', post.id]">
                         create
-                    </span>
+                    </a>
                 </div>
             </div>
         </div>

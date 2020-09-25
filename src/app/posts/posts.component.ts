@@ -3,6 +3,7 @@ import { from } from 'rxjs';
 import {AuthService} from'../auth.service'
 import {PostService} from'./post.service'
 import {CommentService} from'./comment.service'
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -63,14 +64,14 @@ export class PostsComponent implements OnInit {
 
    }
 
-  constructor(private authService:AuthService,private postService:PostService,private commentService:CommentService) { 
+  constructor(private authService:AuthService, private _router: Router,private postService:PostService,private commentService:CommentService) { 
 
   }
 
   ngOnInit() {
       
-     // let retUser=this.authService.getUserData('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhYmMiLCJ1c2VyTmFtZSI6ImFiYyIsInJvbGUiOiJ1c2VyIiwianRpIjoiOTJiZWRhNDItZGY3NS00ZGJkLTlhZWYtZTA5MmNmNDA1NDc2IiwiZXhwIjoxNjAxMDMxNDcxLCJpc3MiOiJodHRwczovL2xvY2FsaG9zdDo0NDMzNi8iLCJhdWQiOiJodHRwczovL2xvY2FsaG9zdDo0NDMzNi8ifQ._MgbX1L1FD_g_w7K3atqzSg3WN62-R1y-U6QPS7blK8')
-      let retUser=this.authService.getUserData('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJqdW5heWVkIiwidXNlck5hbWUiOiJqdW5heWVkIiwicm9sZSI6ImFkbWluIiwianRpIjoiZTgyYTc0YzYtZTE2MS00NTEwLWJjZGItNTZjMGVmNWU5YjJiIiwiZXhwIjoxNjAxMDQyMjcwLCJpc3MiOiJodHRwczovL2xvY2FsaG9zdDo0NDMzNi8iLCJhdWQiOiJodHRwczovL2xvY2FsaG9zdDo0NDMzNi8ifQ.hnQCtWGuqQ3jDg2rBkNLU8cLH5uNi7ohao6P1szYrRY')
+      let retUser=this.authService.getUserData('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhYmMiLCJ1c2VyTmFtZSI6ImFiYyIsInJvbGUiOiJ1c2VyIiwianRpIjoiOTJiZWRhNDItZGY3NS00ZGJkLTlhZWYtZTA5MmNmNDA1NDc2IiwiZXhwIjoxNjAxMDMxNDcxLCJpc3MiOiJodHRwczovL2xvY2FsaG9zdDo0NDMzNi8iLCJhdWQiOiJodHRwczovL2xvY2FsaG9zdDo0NDMzNi8ifQ._MgbX1L1FD_g_w7K3atqzSg3WN62-R1y-U6QPS7blK8')
+     // let retUser=this.authService.getUserData('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJqdW5heWVkIiwidXNlck5hbWUiOiJqdW5heWVkIiwicm9sZSI6ImFkbWluIiwianRpIjoiZTgyYTc0YzYtZTE2MS00NTEwLWJjZGItNTZjMGVmNWU5YjJiIiwiZXhwIjoxNjAxMDQyMjcwLCJpc3MiOiJodHRwczovL2xvY2FsaG9zdDo0NDMzNi8iLCJhdWQiOiJodHRwczovL2xvY2FsaG9zdDo0NDMzNi8ifQ.hnQCtWGuqQ3jDg2rBkNLU8cLH5uNi7ohao6P1szYrRY')
       console.log(retUser)
       if(retUser!=null){
           this.user=retUser;
@@ -92,5 +93,21 @@ export class PostsComponent implements OnInit {
   hideLofForm(){
     this.overlay=false
   }
+  /*
+  onDeleteConfirm(event) {
+    if (confirm("Are you sure to delete ?")) {
+        this.postService.
+    }
+  }
+  */
+
+  checkValidity(){
+     if(this.user.sub){
+        this._router.navigate(['/post/create-post'])
+     }else{
+        this.overlay=true
+     }
+  }
+
 
 }
