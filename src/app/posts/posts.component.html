@@ -1,13 +1,29 @@
+<div class="row justify-content-end">
+    <button class="btn btn-success " (click)="formActive()">create post</button>
+</div>
+
+
 <div class="row">
-    <button class="btn btn-success" (click)="formActive()">create post</button>
+    
     <div *ngFor="let post of posts" class="card column">
+        <div >
         <div class="row justify-content-around">
-            <div class ="col-md-6">
+            <div class ="col-md-4">
             <span class="material-icons">
                 clear
             </span>
+
+            
+
             </div>
-            <div class ="col-md-6">
+
+            <div class ="col-md-4">
+                <button class="sm btn-danger">
+                    {{post.status}}
+                </button>
+            </div>
+
+            <div class ="col-md-4">
             <span class="material-icons">
                 create
             </span>
@@ -16,13 +32,20 @@
 
 
         <p>{{post.author}}</p>
-        <div > <h3>{{post.title}}</h3> </div>
-        <div > <h3>{{post.body}}</h3> </div>
+        <a [routerLink]="['/posts', post.id]" > <h4>{{post.title}}</h4> </a>
+        <a [routerLink]="['/posts', post.id]" > <p>{{post.body}}</p> </a>
+
+    </div>
     </div>
 
    <div>
 
-<div *ngIf="overlay==true">
+<div *ngIf="overlay==true" class="overlay">
+  
+    <span class="material-icons position-relative mt-5 ml-4" (click)="hideLofForm()">
+        clear
+    </span>
+ 
    <app-login ></app-login>
 </div>
 

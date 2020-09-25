@@ -1,1 +1,64 @@
-<p>single-post works!</p>
+<div class="container">
+    <div class="card post">
+        <p style="font-size:100%;">{{post.author}}</p>
+        <hr>
+        <h5>{{post.title}}</h5>
+        <hr>
+        <p>{{post.body}}</p>
+    </div>
+
+    <div class="row justify-content-around">
+
+
+        <div class="col-md-6">
+            <button class="sm btn-danger" (click)="openComments()">
+                {{comments.length}} Comments
+            </button>
+        </div>
+
+        <div class="col-md-6" (click)="openCommentBox()">
+            <button class="sm btn-danger">
+                write a Comments
+            </button>
+        </div>
+    </div>
+
+
+    <div *ngIf="showcommentbox==true">
+        <form class="form-style-9">
+            <ul>
+                <li>
+                    <textarea name="field5" class="field-style" placeholder="Message"></textarea>
+                </li>
+                <li>
+                    <button class="submit2"> Send comment</button>
+                </li>
+
+            </ul>
+        </form>
+    </div>
+
+
+    <div *ngIf="showcomments==true" class="card comment">
+        <div *ngFor="let comment of comments" class="card">
+            <div class="row justify-content-around">
+                <div class="col-md-6">
+                    <span class="material-icons">
+                        clear
+                    </span>
+    
+                </div>
+    
+                <div class="col-md-6">
+                    <span class="material-icons">
+                        create
+                    </span>
+                </div>
+            </div>
+    
+            <p style="font-size:90%;">{{comment.commenter}}</p>
+            <p>{{comment.commentBody}}</p>
+
+        </div>
+    </div>
+</div>

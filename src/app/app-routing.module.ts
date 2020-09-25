@@ -35,25 +35,16 @@ const routes: Routes = [
     component: LoginComponent
   },
   {
-    path: 'user/login/:id',
-    component: LoginComponent
-  },
-  {
     path: 'posts/:id',
     component: SinglePostComponent
   },
   {
-    path: 'posts/:id/:com',
-    component: SinglePostComponent
-  },
-  {
-    path: 'post/create-post',
-    canActivate: [AdminAuthGuard],
+     path: 'post/create-post',
+    // canActivate: [AuthGuard],
     component: CreatePostComponent
   },
   {
     path: 'post/create-post/:id',
-    canActivate: [AdminAuthGuard],
     component: CreatePostComponent
   },
 

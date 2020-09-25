@@ -17,16 +17,11 @@ export class LoginComponent implements OnInit {
   password = ""
   userName = ""
   userRole = "user"
-  prevPage = '0'
-
-
-
-
 
   constructor(private loginServiceService: LoginServiceService, private _Activatedroute: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
-    this.prevPage = this._Activatedroute.snapshot.paramMap.get("id");
+    
   }
   changeOption(option) {
     if (option == "registration") {
@@ -39,9 +34,7 @@ export class LoginComponent implements OnInit {
   login() {
     this.loginServiceService.login({ email: this.email, password: this.password }).subscribe((data: any) => {
 
-      if (this.prevPage !== '0') {
-        this.router.navigateByUrl(`/posts/${this.prevPage}/10`);
-      }
+      console.log(data)
     })
   }
   register() {
