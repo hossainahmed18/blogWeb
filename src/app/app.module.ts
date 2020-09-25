@@ -9,8 +9,6 @@ import { AuthService } from './auth.service';
 import { TokenInterceptorService } from '././interceptors/token-interceptor.service';
 import { LoginComponent } from './login/login.component';
 import { PostsComponent } from './posts/posts.component';
-import { CommentsComponent } from './comments/comments.component';
-import { CommentFormComponent } from './comment-form/comment-form.component';
 import { SinglePostComponent } from './single-post/single-post.component';
 import { CreatePostComponent } from './create-post/create-post.component';
 
@@ -24,8 +22,6 @@ import {MatIconModule} from '@angular/material/icon';
     AppComponent,
     LoginComponent,
     PostsComponent,
-    CommentsComponent,
-    CommentFormComponent,
     SinglePostComponent,
     CreatePostComponent
   ],

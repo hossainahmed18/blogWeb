@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {PostsComponent} from './posts/posts.component'
-import {CommentsComponent} from './comments/comments.component'
-import {CommentFormComponent} from './comment-form/comment-form.component'
 import {LoginComponent} from './login/login.component'
 import {SinglePostComponent} from './single-post/single-post.component'
 import {CreatePostComponent} from './create-post/create-post.component'
