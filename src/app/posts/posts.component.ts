@@ -55,6 +55,7 @@ export class PostsComponent implements OnInit {
         }
    ]
    overlay=false;
+   user={}
 
   constructor(private authService:AuthService) { 
 
@@ -63,8 +64,8 @@ export class PostsComponent implements OnInit {
   ngOnInit() {
       console.log(this.authService.getUserData('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhYmMiLCJ1c2VyTmFtZSI6ImFiYyIsInJvbGUiOiJ1c2VyIiwianRpIjoiOTJiZWRhNDItZGY3NS00ZGJkLTlhZWYtZTA5MmNmNDA1NDc2IiwiZXhwIjoxNjAxMDMxNDcxLCJpc3MiOiJodHRwczovL2xvY2FsaG9zdDo0NDMzNi8iLCJhdWQiOiJodHRwczovL2xvY2FsaG9zdDo0NDMzNi8ifQ._MgbX1L1FD_g_w7K3atqzSg3WN62-R1y-U6QPS7blK8'))
   }
+
   formActive(){
-     console.log("overlay")
      this.overlay=true
   }
   hideLofForm(){
